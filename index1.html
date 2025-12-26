@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourzito - Travel Agency</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /*font-family: Arial, sans-serif; /* Replace with the actual font */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Colors --- */
+:root {
+    --primary-color: #6a4078; /* Dark Purple */
+    --secondary-color: #ffffff; /* White */
+    --text-color: #333;
+    --light-text-color: #eee; 
+}
+
+/* --- Header/Hero Section --- */
+.hero-section {
+    position:relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTg2fHx0cmF2ZWx8ZW58MHx8MHx8fDA%3D'); /* Replace with your image */
+    background-size: cover;
+    /* background-position: center; */
+    color: var(--light-text-color);
+   padding-bottom: 350px; /* Space for the wave effect */
+}
+.hero-section h1{
+    font: size 80px;
+}
+
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+}
+
+.logo {
+    font-size: 2.5em;
+    font-weight: bold;
+    color:whitesmoke;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 30px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--light-text-color);
+    font-size: 18px;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: purple;
+}
+
+.hero-content {
+    text-align: center;
+    padding-top: 100px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom:auto;
+     
+}
+
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: black;
+    
+}
+
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    max-width: 600px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+
+.search-box input {
+    padding: 0 20px;
+    border:none;
+    /* border-radius: 5px 0 0 5px; */
+    width: 70%;
+    font-size: 16px;
+    flex-grow: 1;
+    outline: none;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    background-color: white;
+    color: #333;
+}
+
+.search-box button {
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #8c5b9c; /* Lighter shade of purple */
+}
+
+   /*The 'Wave' effect at the bottom of the hero section */
+    .hero-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background-color:white /* White background for the next section */
+    /* This creates the wave shape using CSS clip-path or an SVG/image for perfection */
+    /* For a simple approximation: */
+     clip-path: ellipse(100% 100% at 50% 100%); 
+    /* You would likely use a background SVG image for the exact shape */
+} 
+
+
+/* --- Best Offers Section --- */
+.best-offers {
+    text-align: center;
+    padding: 80px 5%;
+    background-color: var(--secondary-color);
+}
+
+.best-offers h1 {
+    font-size: 45px;
+    margin-bottom: 5px;
+    font-style:oblique;
+}
+
+.best-offers p {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+
+.tour-cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 2 columns for the first row */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.tour-card {
+    background-color:none;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 4px 8px oklab(73.756% -0.14599 0.06513 / 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animation 1: Lift effect on hover */
+.tour-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px hwb(0 0% 100% / 0.149);
+}
+
+.card-image-wrapper {
+    overflow: hidden;
+}
+
+.tour-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    /* Animation 2: Image zoom on hover */
+    transition: transform 0.4s ease;
+}
+
+.tour-card:hover img {
+    transform: scale(1.05);
+}
+
+.card-info {
+    padding: 15px 20px;
+}
+
+.card-info h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.card-info p {
+    color:black;
+    font-size: 14px;
+}
+
+.view-all-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: opacity 0.3s;
+}
+
+.view-all-button:hover {
+    opacity: 0.9;
+}
+.why-travellino-section {
+    padding: 50px 0;
+    background-color: #fff;
+    /* Use an image overlay similar to the one shown */
+    background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTMyfHx0cmF2ZWx8ZW58MHx8MHx8fDA%3D');
+    background-size: cover;
+    background-position: center;
+    /* background-attachment: fixed; Optional: for a parallax effect */
+    color: #333;
+}
+
+.why-travellino-section h1{
+    color: whitesmoke; /* White title over the background image */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.features-grid {
+    display: grid;
+    /* 2 columns for the main features */
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-box {
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white box */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    min-height: 150px;
+    border: 1px solid;
+
+}
+
+/* Full width boxes (HIGHLY QUALIFIED SERVICE, BEST PRICE GUARANTEE) */
+.feature-box.full-width {
+    grid-column: 3/-1; /* Spans all columns */
+    grid-row: 3/-1;
+    /* width: 50%; /* Make it half-width */
+   /* margin: 0 auto; /* Center it */
+} */
+
+.icon-wrap {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    background-color: #fff; /* Icon background */
+    border: 3px solid #f99f38;
+}
+
+.icon-placeholder {
+    font-size: 2em;
+    line-height: 1;
+}
+
+.feature-box h3 {
+    color: #555;
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.feature-box p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #777;
+}
+
+/* --- Recent Post Section Styles --- */
+.recent-posts-section {
+    padding: 50px 0;
+    background-color: #f4f4f4;
+    margin-top: 10px;
+}
+
+.posts-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+}
+
+.post-card {
+    flex: 1 1 300px; /* Flex basis for responsive layout */
+    max-width: 350px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.post-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.post-content {
+    padding: 15px;
+}
+
+.post-card h4 {
+    color: #333;
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.post-meta {
+    font-size: 0.8em;
+    color: #999;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 5px;
+}
+
+.post-excerpt {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.read-more-btn {
+    display: inline-block;
+    background-color: #7d337a; /* Purple button color from image */
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 0.8em;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.read-more-btn:hover {
+    background-color: #5d265a;
+}
+/* Basic Reset and Global Styles */
+/* body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+} */
+
+.button1 {
+    background-color: #5D3E8C; /* A deep purple color based on the screenshot */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.button1:hover{
+    background-color: goldenrod;
+}
+/* 1. Header Section Styling */
+.villan-section {
+    background-image: url('https://images.unsplash.com/photo-1437846972679-9e6e537be46e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTAwfHx0cmF2ZWx8ZW58MHx8MHx8fDA%3D');/* Placeholder image for the landscape */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 150px 20px 100px; /* Adjust padding to match the height */
+    position: relative;
+    /* Dark overlay to make text readable */
+}
+
+.villan-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark semi-transparent overlay */
+}
+
+.villan-content {
+    position: relative;
+    z-index: 1;
+    padding: 90px 70px;
+}
+
+.villan-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+.button1{
+    background-color:lightslategray;
+}
+.button1.hover{
+    background-color: #333;
+}
+/* 2. Statistics Section Styling */
+.numbers-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.number-grid {
+    display: flex;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.number-item {
+    width: 200px; /* Adjust as needed */
+    margin: 20px;
+    padding: 20px;
+}
+
+.number-number {
+    font-size: 3em;
+    font-weight: bold;
+    color: #5D3E8C; /* Purple for the numbers */
+    margin-bottom: 5px;
+}
+
+.number-label {
+    font-size: 1em;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 3. Flight Banner Styling */
+.flight-banner {
+    background-image: url('https://plus.unsplash.com/premium_photo-1723925072965-f40bd6166c4d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE5fHx0cmF2ZWx8ZW58MHx8MHx8fDA%3D'); /* Placeholder image for the second landscape */
+    background-size:cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    position: relative;
+     padding: 200px 70px;
+
+}
+.button2{
+    background-color:white;
+    /* font-size:10px; */
+    font-size: 1.4em; 
+    margin-bottom: 40px;
+    font-weight: 400;
+    color:black;
+    
+}
+.button2:hover{
+background-color:purple;
+}
+
+.flight-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay */
+}
+
+.flight-banner h2 {
+     font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: 400;
+    position: relative;
+    z-index: 1; 
+}
+
+.flight-banner .button2 {
+    position:relative;
+    /* z-index: 1; */
+}
+
+/* 4. Testimonials Section Styling */
+.testimonials-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-header h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.testimonial-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.testimonial-card {
+    max-width: 300px;
+    text-align: center;
+}
+
+ .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 70%;
+    object-fit:cover;
+    margin-bottom: 20px;
+    border: 5px solid #eee;/* Light border around the image */
+}
+
+.testimonial-card h4 {
+    color: #5D3E8C;
+    margin: 10px 0;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.view-more-button {
+    background-color: #5D3E8C;
+    color: white;
+    padding: 10px 25px;
+    border: 1px solid #5D3E8C;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.view-more-button:hover{
+   background-color:purple ;
+}
+
+/* 5. Footer Styling */
+footer {
+    background-color:#999; /* Light gray background for footer */
+    padding: 50px 20px 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-logo {
+    max-width: 400px;
+}
+
+.logo-text {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #5D3E8C;
+    margin-bottom: 10px;
+}
+
+.footer-contact h4, .footer-social h4 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #333;
+}
+.footer-social img{
+height: auto;
+width: auto;
+}
+/* --- Social Icons Styling --- */
+.social-icons {
+    display: flex;
+    gap: 10px; /* Space between icons */
+    margin-bottom: 30px;
+}
+.icon-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 45px; /* Size of the icon button */
+    height: 45px;
+     border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 6px; /* Slightly rounded corners */
+    text-decoration: none;
+    color: #a0a0a0; /* Light gray icon color */
+    font-size: 1.2em;
+    background-color: #ffffff;
+     transition: background-color 0.2s;
+} 
+
+ 
+
+/* Hover effect (optional) */
+ .icon-link:hover {
+    background-color: #f0f0f0; */
+ }
+
+.footer-contact p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    font-size: 0.8em;
+    color: #888;
+}
+
+/* Simple mobile adjustment */
+@media (max-width: 768px) {
+    .stat-grid, .testimonial-grid, .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .stat-item, .testimonial-card, .footer-logo, .footer-contact {
+        margin: 15px 0;
+        width: 100%;
+        max-width: none;
+    }
+}
+</style>
+<body>
+    <header class="hero-section">
+        <div class="header-top">
+            <h1 class="logo"><b>Tourizto</b></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="#">TOURS <span class="arrow">&#9662;</span></a>
+                        </li>
+                    <li class="dropdown">
+                        <a href="#">ABOUT <span class="arrow">&#9662;</span></a>
+                    </li>
+                    <li><a href="#">TEAM</a></li>
+                    <li><a href="#">GALLERY</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">CONTACTS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="hero-content">
+            <h1>Enjoy Your Dream Vacation</h1>
+            <p>Travel to the any corner of the world, without going around in circles.</p>
+            <div class="search-box">
+                <input type="text" placeholder="Enter keyword">
+                <button>SEARCH</button>
+            </div>
+        </div>
+
+        <div class="hero-wave"></div>
+    </header>
+
+    <section class="best-offers">
+        <h1>Best Offers</h1>
+        <p>Check out our top-rated tours</p>
+
+        <div class="tour-cards-container">
+            <div class="tour-card">
+                <div class="card-image-wrapper">
+                    <img src="https://media.istockphoto.com/id/475439030/photo/the-taj-mahal.webp?a=1&b=1&s=612x612&w=0&k=20&c=OiRnAuAWFvyT4YcAUOV9ghAxHynRzKyEK3fPx58BvOY=">
+                </div>
+                <div class="card-info">
+                    <center><h2>Taj Mahal</h2></center>
+                    <p>Uttarpradesh,Fatehpur,Mathura • 6 days...</p>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="card-image-wrapper">
+                    <img src="https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/w_500,h_350,c_fill,g_auto/v1660823032/Best-Places-to-Visit-in-India-Amritsar/Best-Places-to-Visit-in-India-Amritsar-500x350.jpg" alt="Building in Spain at night">
+                </div>
+                <div class="card-info">
+                    <center><h2>Amristar</h2></center>
+                    <p>Punjab,Wagah,Barcelona • 9 days...</p>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="card-image-wrapper">
+                    <img src="https://www.holidify.com/images/bgImages/GOKARNA.jpg"  alt="Building in Spain at night">
+                </div>
+                <div class="card-info">
+                    <center><h2>Gokarna</h2></center>
+                    <p>Karnataka, Yana, Honnavar&bull; 9 days...</p>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="card-image-wrapper">
+                    <img src="https://t4.ftcdn.net/jpg/13/55/61/11/240_F_1355611160_NS3xzu8psvlav3PEMqj84tl7NCzztfKv.jpg" alt="Building in Spain at night">
+                </div>
+                <div class="card-info">
+                    <center><h2>Adiyogi</h2></center>
+                    <p>Coimbatore, Dayanalinda &bull; 9 days...</p>
+                </div>
+            </div>
+
+            </div>
+
+        <button class="view-all-button">VIEW ALL TOURS</button>
+    </section>
+    <section class="why-travellino-section">
+            <div class="container">
+                <center><b><h1>Why Travellino</h1></b></center>
+
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="icon-wrap orange">
+                            <span class="icon-placeholder">🖐</span>
+                        </div>
+                        <h3>PERSONALIZED MATCHING</h3>
+                        <p>We can provide up to 3 experienced travel specialists who fit best.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="icon-wrap orange">
+                            <span class="icon-placeholder">🧳</span>
+                        </div>
+                        <h3>WIDE VARIETY OF DESTINATIONS</h3>
+                        <p>With Travellino, you'll find a perfect destination among hundreds.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="icon-wrap orange">
+                            <span class="icon-placeholder">👍</span>
+                        </div>
+                        <h3>HIGHLY QUALIFIED SERVICE</h3>
+                        <p>Our high level of service is officially recognized by thousands of clients.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="icon-wrap orange">
+                            <span class="icon-placeholder">📞</span>
+                        </div>
+                        <h3>24/7 SUPPORT</h3>
+                        <p>Our travel agents are always there to support you during your trip.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="icon-wrap orange">
+                            <span class="icon-placeholder">🏨</span>
+                        </div>
+                        <h3>HANDPICKED HOTELS</h3>
+                        <p>We pick the hotels with the utmost qualities and positive reviews.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="icon-wrap orange">
+                            <span class="icon-placeholder">🏷</span>
+                        </div>
+                        <h3>BEST PRICE GUARANTEE</h3>
+                        <p>We guarantee you'll get top-notch comfort at an affordable price.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="recent-posts-section">
+            <div class="container">
+               <center><b><h1>Recent Posts</h1></b></center>
+                <div class="posts-container">
+                    <article class="post-card">
+                        <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1460627390041-532a28402358?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTc2fHx0cmF2ZWx8ZW58MHx8MHx8fDA%3D');"></div>
+                        <div class="post-content">
+                            <h4>Planning a Trip</h4>
+                            <p class="post-meta">Posted by admin, 13.11.2025 | Comments: 0</p>
+                            <p class="post-excerpt">When you need your company to have a new website or if you venture on updating a existing one...</p>
+                            <a href="#" class="read-more-btn">READ MORE</a>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTM3fHx0cmF2ZWx8ZW58MHx8MHx8fDA%3D');"></div>
+                        <div class="post-content">
+                            <h4>Traveling to Johannesburg</h4>
+                            <p class="post-meta">Posted by admin, 13.11.2025 | Comments: 0</p>
+                            <p class="post-excerpt">In a way, Dubai reminded me of most ex-pat-heavy places in the world. It seems...</p>
+                            <a href="#" class="read-more-btn">READ MORE</a>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1538681105587-85640961bf8b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTY2fHx0cmF2ZWx8ZW58MHx8MHx8fDA%3D');"></div>
+                        <div class="post-content">
+                            <h4>Tourlzto's Offbeat Guide</h4>
+                            <p class="post-meta">Posted by admin, 13.11.2025 | Comments: 0</p>
+                            <p class="post-excerpt">Before visiting last month, my friends painted a picture of a city hell. Filled with...</p>
+                            <a href="#" class="read-more-btn">READ MORE</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+<header class="villan-section">
+        <div class="villan-content">
+            <h1>Find Travel Perfection With the Professionalism of Experts</h1>
+            <button class="button1">FIND YOUR PERFECT TOUR</button>
+        </div>
+    </header>
+
+    <section class="numbers-section">
+        <div class="number-grid">
+            <div class="number-item">
+                <p class="number-number">623,744</p>
+                <p class="number-label">Happy Clients</p>
+            </div>
+            <div class="number-item">
+                <p class="number-number">112</p>
+                <p class="number-label">Amazing Tours</p>
+            </div>
+            <div class="number-item">
+                <p class="number-number">594</p>
+                <p class="number-label">Partners</p>
+            </div>
+            <div class="number-item">
+                <p class="number-number">8,711</p>
+                <p class="number-label">Questions Answered</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="flight-banner">
+        <h2>Fastest Way to Compare and Book over 450 Cheap Flights</h2>
+        <button class="button2">FIND YOUR FLIGHT</button>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="section-header">
+            <h1>What Customers Say</h1>
+            <p>Our clients' testimonials are the best proof of our high level of service</p>
+        </div>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <img src="data:image/jpeg;base64,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" alt="James Smith" class="profile-pic">
+                <h4>JAMES SMITH</h4>
+                <p>“Unlike to send an email to say 'thank you' for all of your assistance during my recent trip to Amristar. Love to use Touristo travel services repeatedly. It greatly...”</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO-hj1e0aelBqctEahn9zBTOnmUqQhszIsSg&s" alt="Mary Anderson" class="profile-pic">
+                <h4>MARY ANDERSON</h4>
+                <p>“Smile was extremely helpful. She was so professional and our unique needs were she planned our itineraries. Mary and I highly recommend Tourizto.”</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0K0X8fq3LNuM2l2mm4kGu4e1kSC8goYwryQ&s" alt="Will Johnson" class="profile-pic">
+                <h4>WILL JOHNSON</h4>
+                <p>“I would highly recommend Touristo. Love everything on my recent trip to Uttarpradesh, Coimbatore and Gokarna. Love to use Tourizto travel...”</p>
+            </div>
+        </div>
+        <button class="view-more-button">VIEW MORE</button>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <p class="logo-text">Tourizto</p>
+                <p class="logo-tagline">Since 2022, we have been offering travel experiences powered by quality, technology, energy and enthusiasm.</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Information</h3>
+                <p>4-41/1T Kphb colony, Hyderabad ,Telangana</p>
+                <p>+91 6305823838</p>
+                <p>info@touristo.org</p>
+            </div>
+            <div class="footer-social">
+                <h3>Follow</h3><br>
+                <div class="social-icons">
+            <a href="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Whatsapp2_colored_svg-256.png" class="icon-link">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Instagram_colored_svg_1-256.png" class="icon-link">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-256.png" class="icon-link">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Twitter3_colored_svg-256.png" class="icon-link">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Youtube_colored_svg-256.png" class="icon-link">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+
+                </div>
+                </div>
+        </div>
+        <div class="copyright">
+            <p>© Touristo 2025. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="./index.js"></script>
+</body>
+</html>
